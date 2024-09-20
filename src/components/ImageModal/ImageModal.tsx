@@ -1,10 +1,15 @@
 // import Modal from "react-modal";
-import { useEffect } from "react";
+import { KeyboardEvent, MouseEventHandler, MouseEvent, useEffect } from "react";
 import css from "./ImageModal.module.css";
 
-const ImageModal = ({ currentImg, closeModal }) => {
+type InputProps = {
+  currentImg: { url: string; alt: string };
+  closeModal: () => void;
+};
+
+const ImageModal = ({ currentImg, closeModal }: InputProps) => {
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
       if (event.code === "Escape") {
         closeModal();
       }
@@ -17,7 +22,7 @@ const ImageModal = ({ currentImg, closeModal }) => {
     };
   }, [closeModal]);
 
-  const handleBackDropClick = (event) => {
+  const handleBackDropClick = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.target === event.currentTarget) {
       closeModal();
     }

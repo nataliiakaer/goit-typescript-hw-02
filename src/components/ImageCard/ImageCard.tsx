@@ -1,7 +1,12 @@
 import css from "./ImageCard.module.css";
 
-const ImageCard = ({ image, openModal, setCurrentImg }) => {
-  
+type Props = {
+  image: string;
+  openModal: () => void;
+  setCurrentImg: (url: string,  alt: string) => void;
+};
+
+const ImageCard = ({ image, openModal, setCurrentImg }: Props) => {
   const handleClick = () => {
     setCurrentImg({ url: image.urls.regular, alt: image.alt_description });
     openModal();
