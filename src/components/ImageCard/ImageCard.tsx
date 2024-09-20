@@ -1,9 +1,9 @@
 import css from "./ImageCard.module.css";
 
 type Props = {
-  image: string;
+  image: [];
   openModal: () => void;
-  setCurrentImg: (url: string,  alt: string) => void;
+  setCurrentImg: ({ url: string, alt: string }) => void;
 };
 
 const ImageCard = ({ image, openModal, setCurrentImg }: Props) => {

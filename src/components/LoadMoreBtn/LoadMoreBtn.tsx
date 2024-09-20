@@ -1,6 +1,10 @@
 import css from "./LoadMoreBtn.module.css";
 
-const LoadMoreBtn = ({ getMoreImages }) => {
+type Props = {
+  getMoreImages: () => void;
+};
+
+const LoadMoreBtn = ({ getMoreImages }: Props) => {
   return (
     <button className={css.loadMoreBtn} type="button" onClick={getMoreImages}>
       Load more
