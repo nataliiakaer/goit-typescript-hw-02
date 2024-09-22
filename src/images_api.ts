@@ -7,7 +7,7 @@ export const fetchImagesWithSearchValue = async <T>(
   search: string,
   loadMore: number
 ): Promise<T> => {
-  const { data } = await axios.get(
+  const { data } = await axios.get<T>(
     `/search/photos/?client_id=${ACCESS_KEY_API}&per_page=12&query=${search}&page=${loadMore}`
   );
   return data;

@@ -42,7 +42,7 @@ const App = () => {
   };
 
   const getMoreImages = (): void => {
-    if (loading || loadMore >= totalPages) return; 
+    if (loading || loadMore >= totalPages) return;
     setLoadMore(loadMore + 1);
   };
 
@@ -52,7 +52,7 @@ const App = () => {
     async function fetchImage() {
       try {
         setLoading(true);
-        const data: FetchImagesResponse = await fetchImagesWithSearchValue(
+        const data = await fetchImagesWithSearchValue<FetchImagesResponse>(
           searchValue,
           loadMore
         );
