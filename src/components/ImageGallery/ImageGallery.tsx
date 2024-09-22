@@ -1,27 +1,31 @@
 import css from "./ImageGallery.module.css";
 
 import ImageCard from "../ImageCard/ImageCard.tsx";
+import { CurrentImage, Image } from "../App/App.types.tsx";
+import { FC } from "react";
 
-type Props = {
-  images: [];
+interface ImageGalleryProps {
+  imagesList: Image[];
   openModal: () => void;
-  setCurrentImg: () => void;
-};
+  setCurrentImg: (img: CurrentImage) => void;
+}
 
-const ImageGallery = ({ images, openModal, setCurrentImg }: Props) => {
+const ImageGallery: FC<ImageGalleryProps> = ({
+  imagesList,
+  openModal,
+  setCurrentImg,
+}) => {
   return (
     <ul className={css.list}>
-      {images.map((image) => {
-        return (
-          <li key={image.id} className={css.item}>
-            <ImageCard
-              image={image}
-              openModal={openModal}
-              setCurrentImg={setCurrentImg}
-            />
-          </li>
-        );
-      })}
+      {imagesList.map((image, index) => (
+        <li key={`${image.id}-${index}`} className={css.item}>
+          <ImageCard
+            image={image}
+            openModal={openModal}
+            setCurrentImg={setCurrentImg}
+          />
+        </li>
+      ))}
     </ul>
   );
 };

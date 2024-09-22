@@ -3,12 +3,13 @@ import css from "./SearchBar.module.css";
 import { CiSearch } from "react-icons/ci";
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
+import { FC } from "react";
 
 const INITIAL_VALUES = {
   search: "",
 };
 
-type Props = {
+interface SearchBarProps  {
   onSearch: (values: string) => void;
 };
 
@@ -19,7 +20,7 @@ const SearchValidationSchema = Yup.object().shape({
     .required("Required field for filling in"),
 });
 
-const SearchBar = ({ onSearch }: Props) => {
+const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
   const handleSubmit = (values: FormikValues): void => {
     onSearch(values.search);
   };

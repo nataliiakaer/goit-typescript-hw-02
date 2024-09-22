@@ -1,10 +1,11 @@
+import { FC } from "react";
 import css from "./LoadMoreBtn.module.css";
 
-type Props = {
+interface LoadMoreBtnProps {
   getMoreImages: () => void;
-};
+}
 
-const LoadMoreBtn = ({ getMoreImages }: Props) => {
+const LoadMoreBtn: FC<LoadMoreBtnProps> = ({ getMoreImages }) => {
   return (
     <button className={css.loadMoreBtn} type="button" onClick={getMoreImages}>
       Load more

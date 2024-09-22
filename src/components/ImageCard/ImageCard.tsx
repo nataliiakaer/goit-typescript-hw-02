@@ -1,14 +1,23 @@
+import { FC } from "react";
+import { CurrentImage, Image } from "../App/App.types";
 import css from "./ImageCard.module.css";
 
-type Props = {
-  image: [];
+type ImageCardProps = {
+  image: Image;
   openModal: () => void;
-  setCurrentImg: ({ url: string, alt: string }) => void;
+  setCurrentImg: (img: CurrentImage) => void;
 };
 
-const ImageCard = ({ image, openModal, setCurrentImg }: Props) => {
-  const handleClick = () => {
-    setCurrentImg({ url: image.urls.regular, alt: image.alt_description });
+const ImageCard: FC<ImageCardProps> = ({
+  image,
+  openModal,
+  setCurrentImg,
+}: ImageCardProps) => {
+  const handleClick = (): void => {
+    setCurrentImg({
+      url: image.urls.regular,
+      alt: image.alt_description || "",
+    });
     openModal();
   };
 
